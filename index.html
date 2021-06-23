@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>family</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items:center;
+        }
+        .input {
+            width: 500px;
+            font-size: 2em;
+        }
+        .result {
+            color: whitesmoke;
+            text-align: center;
+            background-color: gray;
+            margin: 0px;
+            padding: 25px;
+            font-size: 50px;
+        }
+        .button {
+            width: 150px;
+            height: 44px;
+            font-size: 2em;
+        }
+        #id {
+            color: whitesmoke;
+            background-color: gray;
+        }
+        #h1 {
+            color: whitesmoke;
+            text-align: center;
+            background-color: gray;
+            margin: 0px;
+            padding: 25px;
+            font-size: 50px;
+        }
+        #function {
+            color: gray;
+            background-color: whitesmoke;
+        }
+        #test1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #test2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="h1">삼각함수 게임 계산기</h1>
+    <form>
+    <div class="container">
+        <h1 id="function">sin함수</h1>
+        <h1 id="id">A팀 입력:</h1>
+        <input id="sin_A" class="input" type="text">
+        <h1 id="id">B팀 입력:</h1>
+        <input id="sin_B" class="input" type="text">
+        <input class="button" type="button"  value="+" onclick="sin_plus()"/>
+        <input class="button" type="button"  value="-" onclick="sin_minus()"/>
+    </div>
+    </form>
+    <form>
+    <div class="container">
+        <h1 id="function">cos함수</h1>
+        <h1 id="id">A팀 입력:</h1>
+        <input id="cos_A" class="input" type="text">
+        <h1 id="id">B팀 입력:</h1>
+        <input id="cos_B" class="input" type="text">
+        <input class="button" type="button"  value="+" onclick="cos_plus()"/>
+        <input class="button" type="button"  value="-" onclick="cos_minus()"/>
+    </div>
+    </form>
+    <form>
+    <div class="container">
+        <h1 id="function">tan함수</h1>
+        <h1 id="id">A팀 입력:</h1>
+        <input id="tan_A" class="input" type="text">
+        <h1 id="id">B팀 입력:</h1>
+        <input id="tan_B" class="input" type="text">
+        <input class="button" type="button"  value="+" onclick="tan_plus()"/>
+        <input class="button" type="button"  value="-" onclick="tan_minus()"/>
+    </div>
+    </form>
+        <p id="result" class="result">결과:</p>
+        <h1 id="test1">A팀 결과 값</h1>
+        <h1 id="test2">B팀 결과 값</h1>
+    <script>
+        function sin_plus () {
+            var A = Number(document.getElementById("sin_A").value);
+            var B = Number(document.getElementById("sin_B").value);
+
+            var result_A = A / 5;
+            var result_B = B / 5;
+            if(A < 0) {
+                var result_A_copy = Math.ceil(result_A);
+            } else {
+                var result_A_copy = Math.floor(result_A);
+            }
+            if(B < 0) {
+                var result_B_copy = Math.ceil(result_B);
+            } else {
+                var result_B_copy = Math.floor(result_B);
+            }
+
+            if(result_A != result_A_copy || result_B != result_B_copy) {
+                document.getElementById("result").innerHTML = "5의 배수를 입력해주세요"
+            } else {
+                var sin_A = Math.sin(A * Math.PI / 180);
+                var sin_B = Math.sin(B * Math.PI / 180);
+                document.getElementById("test1").innerHTML = "A팀: " + sin_A;
+                document.getElementById("test2").innerHTML = "B팀: " + sin_B;
+                if(sin_A > sin_B) {
+                    var result = A + B;
+                    document.getElementById("result").innerHTML = "A팀: " + result;
+                } else if(sin_A < sin_B) {
+                    var result = A + B;
+                    document.getElementById("result").innerHTML = "B팀: " + result;
+                } else {
+                   document.getElementById("result").innerHTML = "같은 각도 ";
+                }
+            }  
+        }
+        function sin_minus () {
+            var A = Number(document.getElementById("sin_A").value);
+            var B = Number(document.getElementById("sin_B").value);
+
+            var result_A = A / 5;
+            var result_B = B / 5;
+            if(A < 0) {
+                var result_A_copy = Math.ceil(result_A);
+            } else {
+                var result_A_copy = Math.floor(result_A);
+            }
+            if(B < 0) {
+                var result_B_copy = Math.ceil(result_B);
+            } else {
+                var result_B_copy = Math.floor(result_B);
+            }
+            
+            if(result_A != result_A_copy || result_B != result_B_copy) {
+                document.getElementById("result").innerHTML = "5의 배수를 입력해주세요"
+            } else {
+                var sin_A = Math.sin(A * Math.PI / 180);
+                var sin_B = Math.sin(B * Math.PI / 180);
+                document.getElementById("test1").innerHTML = "A팀: " + sin_A;
+                document.getElementById("test2").innerHTML = "B팀: " + sin_B;
+                if(sin_A > sin_B) {
+                    var result = A - B;
+                    document.getElementById("result").innerHTML = "A팀: " + result;
+                } else if(sin_A < sin_B) {
+                    var result = B - A;
+                    document.getElementById("result").innerHTML = "B팀: " + result;
+                } else {
+                   document.getElementById("result").innerHTML = "같은 각도 ";
+                }
+            }  
+        }
+        function cos_plus () {
+            var A = Number(document.getElementById("cos_A").value);
+            var B = Number(document.getElementById("cos_B").value);
+
+            var result_A = A / 5;
+            var result_B = B / 5;
+            if(A < 0) {
+                var result_A_copy = Math.ceil(result_A);
+            } else {
+                var result_A_copy = Math.floor(result_A);
+            }
+            if(B < 0) {
+                var result_B_copy = Math.ceil(result_B);
+            } else {
+                var result_B_copy = Math.floor(result_B);
+            }
+            
+            if(result_A != result_A_copy || result_B != result_B_copy) {
+                document.getElementById("result").innerHTML = "5의 배수를 입력해주세요"
+            } else {
+                var cos_A = Math.cos(A * Math.PI / 180);
+                var cos_B = Math.cos(B * Math.PI / 180);
+                document.getElementById("test1").innerHTML = "A팀: " + cos_A;
+                document.getElementById("test2").innerHTML = "B팀: " + cos_B;
+                if(cos_A > cos_B) {
+                    var result = A + B;
+                    document.getElementById("result").innerHTML = "A팀: " + result;
+                } else if(cos_A < cos_B) {
+                    var result = B + A;
+                    document.getElementById("result").innerHTML = "B팀: " + result;
+                } else {
+                   document.getElementById("result").innerHTML = "같은 각도 ";
+                }
+            }  
+        }
+        function cos_minus () {
+            var A = Number(document.getElementById("cos_A").value);
+            var B = Number(document.getElementById("cos_B").value);
+
+            var result_A = A / 5;
+            var result_B = B / 5;
+            if(A < 0) {
+                var result_A_copy = Math.ceil(result_A);
+            } else {
+                var result_A_copy = Math.floor(result_A);
+            }
+            if(B < 0) {
+                var result_B_copy = Math.ceil(result_B);
+            } else {
+                var result_B_copy = Math.floor(result_B);
+            }
+            
+            if(result_A != result_A_copy || result_B != result_B_copy) {
+                document.getElementById("result").innerHTML = "5의 배수를 입력해주세요"
+            } else {
+                var cos_A = Math.cos(A * Math.PI / 180);
+                var cos_B = Math.cos(B * Math.PI / 180);
+                document.getElementById("test1").innerHTML = "A팀: " + cos_A;
+                document.getElementById("test2").innerHTML = "B팀: " + cos_B;
+                if(cos_A > cos_B) {
+                    var result = A - B;
+                    document.getElementById("result").innerHTML = "A팀: " + result;
+                } else if(cos_A < cos_B) {
+                    var result = B - A;
+                    document.getElementById("result").innerHTML = "B팀: " + result;
+                } else {
+                   document.getElementById("result").innerHTML = "같은 각도 ";
+                }
+            }  
+        }
+        function tan_plus () {
+            var A = Number(document.getElementById("tan_A").value);
+            var B = Number(document.getElementById("tan_B").value);
+
+            var result_A = A / 5;
+            var result_B = B / 5;
+            if(A < 0) {
+                var result_A_copy = Math.ceil(result_A);
+            } else {
+                var result_A_copy = Math.floor(result_A);
+            }
+            if(B < 0) {
+                var result_B_copy = Math.ceil(result_B);
+            } else {
+                var result_B_copy = Math.floor(result_B);
+            }
+            
+            if(result_A != result_A_copy || result_B != result_B_copy) {
+                document.getElementById("result").innerHTML = "5의 배수를 입력해주세요"
+            } else {
+                var tan_A = Math.tan(A * Math.PI / 180);
+                var tan_B = Math.tan(B * Math.PI / 180);
+                document.getElementById("test1").innerHTML = "A팀: " + tan_A;
+                document.getElementById("test2").innerHTML = "B팀: " + tan_B;
+                if(tan_A > tan_B) {
+                    var result = A + B;
+                    document.getElementById("result").innerHTML = "A팀: " + result;
+                } else if(tan_A < tan_B) {
+                    var result = B + A;
+                    document.getElementById("result").innerHTML = "B팀: " + result;
+                } else {
+                   document.getElementById("result").innerHTML = "같은 각도 ";
+                }
+            }  
+        }
+        function tan_minus () {
+            var A = Number(document.getElementById("tan_A").value);
+            var B = Number(document.getElementById("tan_B").value);
+
+            var result_A = A / 5;
+            var result_B = B / 5;
+            if(A < 0) {
+                var result_A_copy = Math.ceil(result_A);
+            } else {
+                var result_A_copy = Math.floor(result_A);
+            }
+            if(B < 0) {
+                var result_B_copy = Math.ceil(result_B);
+            } else {
+                var result_B_copy = Math.floor(result_B);
+            }
+            
+            if(result_A != result_A_copy || result_B != result_B_copy) {
+                document.getElementById("result").innerHTML = "5의 배수를 입력해주세요"
+            } else {
+                var tan_A = Math.tan(A * Math.PI / 180);
+                var tan_B = Math.tan(B * Math.PI / 180);
+                document.getElementById("test1").innerHTML = "A팀: " + tan_A;
+                document.getElementById("test2").innerHTML = "B팀: " + tan_B;
+                if(tan_A > tan_B) {
+                    var result = A - B;
+                    document.getElementById("result").innerHTML = "A팀: " + result;
+                } else if(tan_A < tan_B) {
+                    var result = B - A;
+                    document.getElementById("result").innerHTML = "B팀: " + result;
+                } else {
+                   document.getElementById("result").innerHTML = "같은 각도 ";
+                }
+            }  
+        }
+    </script>
+</body>
+</html>
